@@ -1,0 +1,68 @@
+{
+    "name": "snk2018/yii2-backup_mysql",
+    "description": "Backuping a MySQL database by the PHP",
+    "type": "yii2-extension",
+    "keywords": ["yii2","Database", "Backup","MySQL","PHP"],
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "SergeiK",
+            "email": "snk2018.mail@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yiisoft/yii2-app-basic": "~2.0.0",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+        "yiisoft/yii2-swiftmailer": "~2.0.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0"
+    },    
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ],
+        "post-create-project-cmd": [
+            "@php siteclasses/script.php",
+            "yii\\composer\\Installer::postCreateProject",
+            "yii\\composer\\Installer::postInstall"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ]
+        },
+        "yii\\composer\\Installer::postInstall": {
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        }
+    },
+    "repositories":[
+        {
+            "type":"package",
+            "package":{
+                "name":"snk2018/yii2-backup_mysql",
+                "version":"1.0.0",
+                "source":{
+                     "type":"git",
+                     "url":"https://github.com/snk2018/yii2-backup_mysql",
+                     "reference":"master"
+                }
+            }
+        }
+    ]   
+}
