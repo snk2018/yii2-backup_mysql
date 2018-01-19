@@ -81,7 +81,7 @@ return [
     'compress' => FALSE, //to compress output file
     'row_block' => 512, //limit the number of rows in the INSERT
     'row_block_limit' => 3, //row_block*row_block_limit the number of rows returned by the SELECT
-    'to_exclude_data' => ['countryinfo' => ['_id',],] //[name table]=>[] - the table to exclude,[name table]=>[name row,] - the rows of table to exclude
+    'to_exclude_data' => ['countryinfo' => ['_id',],] //[name table]=>[] - the table to exclude,[name table]=>[name field,] - the fields of table to exclude
 ];
 ```
 
